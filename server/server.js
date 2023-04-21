@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { Socket } from "socket.io";
 import "./config/config.js";
 import { logOut, signIn, signUp } from "./controller/userController.js";
 import {
@@ -25,3 +26,9 @@ app.post("/api/v1/signin", encryptPassword, signIn);
 app.get("/api/v1/logout", verifyJWTCookie, logOut);
 
 app.listen(PORT, () => console.log("Server running on port", PORT));
+
+/* const io = new Socket(app.listen(PORT));
+
+io.on("connection", (socket) => {
+	console.log("socket connected", socket);
+}); */
