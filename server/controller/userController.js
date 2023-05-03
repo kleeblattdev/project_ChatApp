@@ -9,7 +9,6 @@ export const signUp = async (req, res) => {
 		await db.collection(COL).insertOne(req.body);
 		res.end();
 	} else {
-		alert("username already in use");
 		res.status(401).end();
 	}
 };
@@ -20,7 +19,6 @@ export const signIn = async (req, res) => {
 		.collection(COL)
 		.findOne({ user: req.body.user, password: req.body.password });
 	if (response === null) {
-		alert("ooopsss... something went wrong");
 		res.status(401).end();
 	} else {
 		const token = createJWToken({ user: response._id });

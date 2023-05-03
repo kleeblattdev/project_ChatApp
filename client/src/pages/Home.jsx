@@ -10,7 +10,7 @@ const Home = () => {
 
 	const signUp = async () => {
 		try {
-			const res = await fetch(url + "signup", {
+			const res = await fetch(url + "/signup", {
 				method: "POST",
 				headers: { "content-type": "application/json" },
 				body: JSON.stringify({
